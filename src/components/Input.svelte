@@ -2,6 +2,7 @@
     export let name
     export let label
     export let value
+    export let type = 'text'
     export let required
 </script>
 
@@ -11,7 +12,7 @@
         <strong>*</strong>
     {/if}
 </label>
-<input id={name} {name} bind:value={value} {required} />
+<input id={name} {type} {name} bind:value={value} {required} />
 
 <style>
     input {
