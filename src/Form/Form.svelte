@@ -1,61 +1,38 @@
 <script>
     import Input from '../components/Input.svelte'
-
-    import LineForm from './LineForm.svelte'
-    import PolylineForm from './PolylineForm.svelte'
-    import PolygonForm from './PolygonForm.svelte'
-    import RectForm from './RectForm.svelte'
-    import CircleForm from './CircleForm.svelte'
-    import EllipseForm from './EllipseForm.svelte'
-    import PathForm from './PathForm.svelte'
+    import AttributesForm from './AttributesForm.svelte'
 
     import { createEventDispatcher } from 'svelte'
+    import { elementsSchema } from '../utils'
 
     const eventDispatcher = createEventDispatcher()
 
     export let element
+
+    const components = Object.keys(elementsSchema).filter(key => elementsSchema.hasOwnProperty(key))
 </script>
 
 <form on:submit|preventDefault>
+    <fieldset>
+        <legend>Element name</legend>
+        <Input name="name" label="Name" bind:value={element.name} required />
+    </fieldset>
+
     <fieldset>
         <legend>Element selection</legend>
         <label for="element_tag">Element tag <strong>*</strong></label>
         <select id="element_tag" bind:value={element.tag} required>
             <option value=""></option>
-            <option value="line">Line</option>
-            <option value="polyline">Polyline</option>
-            <option value="polygon">Polygon</option>
-            <option value="rect">Rect</option>
-            <option value="circle">Circle</option>
-            <option value="ellipse">Ellipse</option>
-            <option value="path">Path</option>
+            {#each components as component (component)}
+                <option value={component}>{elementsSchema[component].label}</option>
+            {/each}
         </select>
     </fieldset>
 
     {#if element.tag}
         <fieldset>
             <legend>Element configuration</legend>
-            {#if element.tag === 'line'}
-                <LineForm bind:element={element} />
-            {/if}
-            {#if element.tag === 'polyline'}
-                <PolylineForm bind:element={element} />
-            {/if}
-            {#if element.tag === 'polygon'}
-                <PolygonForm bind:element={element} />
-            {/if}
-            {#if element.tag === 'rect'}
-                <RectForm bind:element={element} />
-            {/if}
-            {#if element.tag === 'circle'}
-                <CircleForm bind:element={element} />
-            {/if}
-            {#if element.tag === 'ellipse'}
-                <EllipseForm bind:element={element} />
-            {/if}
-            {#if element.tag === 'path'}
-                <PathForm bind:element={element} />
-            {/if}
+            <AttributesForm {element} />
         </fieldset>
 
         <fieldset>

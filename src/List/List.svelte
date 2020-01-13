@@ -24,6 +24,7 @@
 
 <style>
     ul {
+        list-style: none;
         padding: 0;
         margin-bottom: 2rem;
     }

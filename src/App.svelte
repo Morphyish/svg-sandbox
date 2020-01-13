@@ -1,6 +1,6 @@
 <script>
     import Form from './Form/Form.svelte'
-    import Sandbox from './Sandbox.svelte'
+    import Sandbox from './Sandbox/Sandbox.svelte'
     import List from './List/List.svelte'
 
     import { elementForm, elements, state } from './stores'
@@ -58,7 +58,7 @@
     main {
 		display: flex;
         flex: 1;
-        padding: 1rem 0;
+        padding-bottom: 1rem;
     }
 
     section {
@@ -66,10 +66,22 @@
         flex-direction: column;
         flex: 1;
         padding: .5rem;
-        height: 100%;
+        overflow: auto;
     }
 
     section + section {
         border-left: 1px solid #ff3e00;
+    }
+
+    @media (max-width: 959px) {
+        main {
+            flex-direction: column-reverse;
+            padding: 0 1rem;
+        }
+
+        section + section {
+            border-left: 0;
+            border-bottom: 1px solid #ff3e00;
+        }
     }
 </style>

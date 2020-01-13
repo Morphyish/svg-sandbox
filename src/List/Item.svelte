@@ -14,7 +14,7 @@
 <li>
     <details>
         <summary>
-            {element.tag}
+            {element.name}
 
             <div class="actions">
                 <button type="button" on:click={() => editElement(element)}>EDIT</button>
@@ -42,7 +42,7 @@
 
     details p {
         margin: 0;
-        padding: 1rem;
+        padding: 0 1rem 1rem 1rem;
     }
 
     .actions {

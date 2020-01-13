@@ -1,8 +1,26 @@
 import { writable } from 'svelte/store'
 
 function elementsStore() {
-    const elements = writable([])
-    let nextId = 0
+    const elements = writable([
+        {
+            id: 'element_0',
+            name: 'My first circle',
+            tag: 'circle',
+            cx: 50,
+            cy: 50,
+            r: 45,
+        },
+        {
+            id: 'element_1',
+            name: 'A red circle',
+            tag: 'circle',
+            cx: 95,
+            cy: 95,
+            r: 45,
+            stroke: 'red',
+        },
+    ])
+    let nextId = 2
 
     const add = element => {
         elements.update(elementsSnapshot => (
