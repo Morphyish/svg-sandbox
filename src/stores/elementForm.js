@@ -1,11 +1,15 @@
 import { writable } from 'svelte/store'
 
-function elementStore() {
+function elementFormStore() {
     const initState = {
         tag: '',
     }
 
     const element = writable({ ...initState })
+
+    const setTo = el => {
+        element.set({ ...el })
+    }
 
     const reset = () => {
         element.set({ ...initState })
@@ -13,8 +17,9 @@ function elementStore() {
 
     return {
         ...element,
+        setTo,
         reset,
     }
 }
 
-export const element = elementStore()
+export const elementForm = elementFormStore()

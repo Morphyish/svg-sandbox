@@ -1,3 +1,3 @@
-export { element } from './element'
+export { elementForm } from './elementForm'
 export { elements } from './elements'
 export { state } from './state'
