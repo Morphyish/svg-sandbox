@@ -11,6 +11,7 @@
     {#each $elements as element}
         <li>
             {element.tag}
+            <button type="button" on:click={() => elements.remove(element.id)}>DELETE</button>
         </li>
     {:else}
         <p>
@@ -22,3 +23,16 @@
 <div>
     <button type="button" on:click={newElement}>NEW</button>
 </div>
+
+<style>
+    ul {
+        padding: 0;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+</style>
