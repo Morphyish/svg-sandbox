@@ -1,9 +1,11 @@
 <script>
     export let instructions
+
+    import { elements } from './stores'
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox={instructions.viewBox} role="img">
-    {#each instructions.elements as element}
+    {#each $elements as element}
         {#if element.tag === 'line'}
             <line x1={element.x1} x2={element.x2} y1={element.y1} y2={element.y2} stroke={element.stroke} stroke-width={element.strokeWidth} />
         {/if}

@@ -3,38 +3,17 @@
     import Sandbox from './Sandbox.svelte'
     import List from './List/List.svelte'
 
+    import { element, elements, state } from './stores'
 
-    let state = 'list'
-    let instructions = {
-        elements: [],
-    }
-    let element
-
-    const resetForm = () => {
-        element = {
-            tag: '',
-        }
-    }
-
-    const newElement = () => {
-        resetForm()
-        state = 'form'
-    }
+    let instructions = {}
 
     const addElement = () => {
-        if (element.tag) {
-            instructions.elements = [
-                ...instructions.elements,
-                {
-                    ...element,
-                },
-            ]
-        }
-        state = 'list'
+        elements.add($element)
+        state.goTo(state.list)
     }
 
     const handleCancel = () => {
-        state = 'list'
+        state.goTo(state.list)
     }
 </script>
 
@@ -42,11 +21,11 @@
 <main>
     <section>
         <h2>Configuration</h2>
-        {#if state === 'list'}
-            <List elements={instructions.elements} on:new={newElement} />
+        {#if $state === state.list}
+            <List />
         {/if}
-        {#if state === 'form'}
-            <Form {element} on:submit={addElement} on:cancel={handleCancel} />
+        {#if $state === state.form}
+            <Form element={$element} on:submit={addElement} on:cancel={handleCancel} />
         {/if}
     </section>
     <section>

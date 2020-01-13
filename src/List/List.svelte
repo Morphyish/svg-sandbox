@@ -1,13 +1,14 @@
 <script>
-    export let elements
+    import { element, elements, state } from '../stores'
 
-    import { createEventDispatcher } from 'svelte'
-
-    const eventDispatcher = createEventDispatcher()
+    const newElement = () => {
+        element.reset()
+        state.goTo(state.form)
+    }
 </script>
 
 <ul>
-    {#each elements as element}
+    {#each $elements as element}
         <li>
             {element.tag}
         </li>
@@ -19,5 +20,5 @@
 </ul>
 
 <div>
-    <button type="button" on:click={() => eventDispatcher('new')}>NEW</button>
+    <button type="button" on:click={newElement}>NEW</button>
 </div>
