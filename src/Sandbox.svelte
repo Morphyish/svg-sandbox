@@ -34,7 +34,7 @@
     svg {
         height: 100%;
         width: 100%;
-        stroke: #333;
+        stroke: currentColor;
         fill: none;
     }
 </style>
