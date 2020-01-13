@@ -3,12 +3,16 @@
     import Sandbox from './Sandbox.svelte'
     import List from './List/List.svelte'
 
-    import { element, elements, state } from './stores'
+    import { elementForm, elements, state } from './stores'
 
     let instructions = {}
 
-    const addElement = () => {
-        elements.add($element)
+    const submitForm = () => {
+        if ($elementForm.id) {
+            elements.edit($elementForm)
+        } else {
+            elements.add($elementForm)
+        }
         state.goTo(state.list)
     }
 
@@ -25,7 +29,7 @@
             <List />
         {/if}
         {#if $state === state.form}
-            <Form element={$element} on:submit={addElement} on:cancel={handleCancel} />
+            <Form element={$elementForm} on:submit={submitForm} on:cancel={handleCancel} />
         {/if}
     </section>
     <section>

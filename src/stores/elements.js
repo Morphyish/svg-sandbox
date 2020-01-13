@@ -16,13 +16,13 @@ function elementsStore() {
         ))
     }
 
-    const edit = (id, partial) => {
+    const edit = element => {
         elements.update(elementsSnapshot => {
-            const index = elementsSnapshot.findIndex(el => el.id === id)
-            if (index) {
+            const index = elementsSnapshot.findIndex(el => el.id === element.id)
+            if (index > -1) {
                 elementsSnapshot[index] = {
                     ...elementsSnapshot[index],
-                    ...partial,
+                    ...element,
                 }
             }
 

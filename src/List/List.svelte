@@ -1,18 +1,16 @@
 <script>
-    import { element, elements, state } from '../stores'
+    import Item from './Item.svelte'
+    import { elementForm, elements, state } from '../stores'
 
     const newElement = () => {
-        element.reset()
+        elementForm.reset()
         state.goTo(state.form)
     }
 </script>
 
 <ul>
     {#each $elements as element}
-        <li>
-            {element.tag}
-            <button type="button" on:click={() => elements.remove(element.id)}>DELETE</button>
-        </li>
+        <Item {element} />
     {:else}
         <p>
             <em>Empty SVG</em>
@@ -27,12 +25,6 @@
 <style>
     ul {
         padding: 0;
-    }
-
-    li {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
     }
 </style>
