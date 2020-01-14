@@ -2,11 +2,19 @@
 
 Small project to create and edit SVGs from a web form rather than a graphic software.
 
+Running version can be found at [svg.morphyish.com](https://svg.morphyish.com)
+
 ## Get started
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
-Install the dependencies...
+Clone the project with git...
+
+```bash
+git clone https://github.com/Morphyish/svg-sandbox.git
+```
+
+...Install the dependencies...
 
 ```bash
 cd svg-sandbox
