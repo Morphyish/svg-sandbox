@@ -5,7 +5,12 @@
 
     import { elementForm, elements, state } from './stores'
 
-    let instructions = {}
+    let instructions = {
+        height: '100',
+        width: '100',
+        zoom: 9,
+        viewBox: '0 0 250 250'
+    }
 
     const submitForm = () => {
         if ($elementForm.id) {
