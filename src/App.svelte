@@ -53,6 +53,7 @@
         text-align: center;
         font-size: 1.5rem;
         color: #ff3e00;
+        margin: 1rem 0;
     }
 
     h2 {
@@ -63,6 +64,7 @@
     main {
 		display: flex;
         flex: 1;
+        max-height: calc(100vh - 4rem);
         padding-bottom: 1rem;
     }
 
