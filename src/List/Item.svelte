@@ -37,12 +37,12 @@
         display: flex;
         align-items: center;
         text-transform: capitalize;
-        padding: 1rem;
+        padding: .75rem .25rem;
     }
 
     details p {
         margin: 0;
-        padding: 0 1rem 1rem 1rem;
+        padding: 0 .5rem .75rem .5rem;
     }
 
     .actions {
