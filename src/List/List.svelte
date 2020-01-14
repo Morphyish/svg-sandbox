@@ -19,7 +19,7 @@
 </ul>
 
 <div>
-    <button type="button" on:click={newElement}>NEW</button>
+    <button type="button" on:click={newElement}>ADD ELEMENT</button>
 </div>
 
 <style>
