@@ -8,6 +8,10 @@
     }
 </script>
 
+<div class="actions">
+    <button type="button" on:click={newElement}>ADD ELEMENT</button>
+</div>
+
 <ul>
     {#each $elements as element}
         <Item {element} />
@@ -18,14 +22,15 @@
     {/each}
 </ul>
 
-<div>
-    <button type="button" on:click={newElement}>ADD ELEMENT</button>
-</div>
-
 <style>
     ul {
         list-style: none;
         padding: 0;
         margin-bottom: 2rem;
+    }
+
+    .actions {
+        text-align: right;
+        padding: 0 .25rem;
     }
 </style>
