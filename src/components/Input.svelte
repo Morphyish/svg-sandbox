@@ -2,7 +2,6 @@
     export let name
     export let label
     export let value
-    export let type = 'text'
     export let required
 </script>
 
