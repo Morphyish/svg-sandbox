@@ -2,26 +2,26 @@
     import Input from '../components/Input.svelte'
     import AttributesForm from './AttributesForm.svelte'
 
-    import { createEventDispatcher } from 'svelte'
+    import { state, elementForm } from '../stores'
     import { elementsSchema } from '../utils'
 
-    const eventDispatcher = createEventDispatcher()
-
-    export let element
-
     const components = Object.keys(elementsSchema).filter(key => elementsSchema.hasOwnProperty(key))
+
+    const submitForm = () => {
+        state.goTo(state.list)
+    }
 </script>
 
-<form on:submit|preventDefault>
+<form on:submit|preventDefault={submitForm}>
     <fieldset>
         <legend>Element name</legend>
-        <Input name="name" label="Name" bind:value={element.name} required />
+        <Input name="name" label="Name" bind:value={$elementForm.name} required />
     </fieldset>
 
     <fieldset>
         <legend>Element selection</legend>
         <label for="element_tag">Element tag <strong>*</strong></label>
-        <select id="element_tag" bind:value={element.tag} required>
+        <select id="element_tag" bind:value={$elementForm.tag} required>
             <option value=""></option>
             {#each components as component (component)}
                 <option value={component}>{elementsSchema[component].label}</option>
@@ -29,26 +29,26 @@
         </select>
     </fieldset>
 
-    {#if element.tag}
+    {#if $elementForm.tag}
         <fieldset>
             <legend>Element configuration</legend>
-            <AttributesForm {element} />
+            <AttributesForm element={$elementForm} />
         </fieldset>
 
         <fieldset>
             <legend>Element styling</legend>
-            <Input name="stroke" label="Stroke" bind:value={element.stroke} />
+            <Input name="stroke" label="Stroke" bind:value={$elementForm.stroke} />
 
-            {#if element.tag !== 'line'}
-                <Input name="fill" label="Fill" bind:value={element.fill} />
+            {#if $elementForm.tag !== 'line'}
+                <Input name="fill" label="Fill" bind:value={$elementForm.fill} />
             {/if}
 
-            <Input name="stroke-width" label="Stroke width" bind:value={element.strokeWidth} />
+            <Input name="stroke-width" label="Stroke width" bind:value={$elementForm.strokeWidth} />
         </fieldset>
     {/if}
 
     <div class="button-wrapper">
-        <button type="button" on:click={() => eventDispatcher('cancel')}>CANCEL</button>
+        <button type="button" on:click={() => state.goTo(state.list)}>CANCEL</button>
         <button type="submit">ADD</button>
     </div>
 </form>

@@ -3,6 +3,8 @@ import { writable } from 'svelte/store'
 function stateStore() {
     const list = 'LIST'
     const form = 'FORM'
+    const imprt = 'IMPORT'
+    const exprt = 'EXPORT'
 
     const state = writable(list)
 
@@ -15,6 +17,8 @@ function stateStore() {
         goTo,
         list,
         form,
+        import: imprt,
+        export: exprt,
     }
 }
 

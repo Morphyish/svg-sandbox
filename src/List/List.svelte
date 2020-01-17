@@ -1,34 +1,8 @@
-<script>
-    import Item from './Item.svelte'
-    import { elementForm, elements, state } from '../stores'
-
-    const newElement = () => {
-        elementForm.reset()
-        state.goTo(state.form)
-    }
-</script>
-
 <div class="actions">
-    <button type="button" on:click={newElement}>ADD ELEMENT</button>
+    <button type="button">ADD ELEMENT</button>
 </div>
 
-<ul>
-    {#each $elements as element}
-        <Item {element} />
-    {:else}
-        <p>
-            <em>Empty SVG</em>
-        </p>
-    {/each}
-</ul>
-
 <style>
-    ul {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 2rem;
-    }
-
     .actions {
         text-align: right;
         padding: 0 .25rem;

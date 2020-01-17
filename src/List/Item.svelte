@@ -3,10 +3,9 @@
 
     export let element
 
-    import { elementForm, elements, state } from '../stores'
+    import { state } from '../stores'
 
-    const editElement = el => {
-        elementForm.setTo(el)
+    const editElement = () => {
         state.goTo(state.form)
     }
 </script>
@@ -18,7 +17,7 @@
 
             <div class="actions">
                 <button type="button" on:click={() => editElement(element)}>EDIT</button>
-                <button type="button" on:click={() => elements.remove(element.id)}>DELETE</button>
+                <button type="button">DELETE</button>
             </div>
         </summary>
 
