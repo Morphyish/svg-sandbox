@@ -3,10 +3,7 @@
 
     export let element
 
-    import { state } from '../stores'
-
     const editElement = () => {
-        state.goTo(state.form)
     }
 </script>
 

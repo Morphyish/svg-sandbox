@@ -1,8 +1,11 @@
 <script>
-    import { state, svg } from '../stores'
+    import { svg } from '../stores'
 
-    const svgAsString = svg.exportAsString()
-    const svgAsUrl = svg.exportAsUrl()
+    let svgAsString = ''
+    let svgAsUrl = ''
+
+    $: $svg, svgAsString = svg.exportAsString()
+    $: $svg, svgAsUrl = svg.exportAsUrl()
 
     const copyToClipboardFallback = () => {
         const textArea = document.createElement('textarea');
@@ -28,25 +31,23 @@
             copyToClipboardFallback()
         }
     }
+
+    const downloadSvg = () => {
+        if (svgAsString) {
+            const a = document.createElement('a');
+            a.href = svgAsUrl;
+            a.style.position='fixed';  //avoid scrolling to bottom
+            a.download = 'my_svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
 </script>
 
-{#if svgAsString}
-    <label for="string_import">SVG code</label>
-    <textarea id="string_import" name="string_import" rows="10" value={svgAsString}></textarea>
-
-    <p class="center">
-        <button type="button" on:click={copyToClipboard}>COPY SVG</button>
-        OR
-        <a href={svgAsUrl} download>DOWNLOAD SVG</a>
-    </p>
-{:else}
-    <p class="center">
-        <em>No SVG to export</em>
-    </p>
-{/if}
-
 <div class="button-wrapper">
-    <button type="button" on:click={() => state.goTo(state.list)}>RETURN</button>
+    <button type="button" on:click={copyToClipboard}>COPY SVG</button>
+    <button type="button" on:click={downloadSvg}>SAVE SVG</button>
 </div>
 
 <style>
@@ -54,12 +55,9 @@
         resize: vertical;
     }
 
-    .center {
-        text-align: center;
-    }
-
     .button-wrapper {
         display: flex;
+        flex-direction: column;
         margin-top: auto;
     }
 </style>

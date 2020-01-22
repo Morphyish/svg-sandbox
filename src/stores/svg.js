@@ -3,7 +3,7 @@ import { parse } from 'svg-parser'
 import { stringify } from '../utils'
 
 function svgStore() {
-    const svg = writable({children: []})
+    const svg = writable({ children: [] })
 
     const load = html => {
         const parsed = parse(html)
@@ -21,9 +21,13 @@ function svgStore() {
 
     const exportAsUrl = () => {
         let source = exportAsString()
-        source = `<?xml version="1.0" encoding="utf-8"?>\r\n${source}`
+        if (source) {
+            source = `<?xml version="1.0" encoding="utf-8"?>\r\n${source}`
 
-        return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(source)}`
+            return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(source)}`
+        } else {
+            return '#'
+        }
     }
 
     return {
