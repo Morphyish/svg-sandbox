@@ -45,19 +45,15 @@
     }
 </script>
 
-<div class="button-wrapper">
-    <button type="button" on:click={copyToClipboard}>COPY SVG</button>
-    <button type="button" on:click={downloadSvg}>SAVE SVG</button>
-</div>
+
+<label for="string_import">As string</label>
+<textarea id="string_import" name="string_import" rows="10" bind:value={svgAsString}></textarea>
+
+<button type="button" on:click={copyToClipboard}>COPY SVG</button>
+<button type="button" on:click={downloadSvg}>SAVE SVG</button>
 
 <style>
     textarea {
         resize: vertical;
-    }
-
-    .button-wrapper {
-        display: flex;
-        flex-direction: column;
-        margin-top: auto;
     }
 </style>

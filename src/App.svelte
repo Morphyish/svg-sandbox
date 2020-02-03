@@ -3,54 +3,71 @@
     import List from './List/List.svelte'
     import Import from './Import/Import.svelte'
     import Export from './Export/Export.svelte'
+    import Navigation from './Navigation/Navigation.svelte'
+
+    import { navigation, navigationStates } from './stores'
 </script>
 
-<h1>SVG Sandbox</h1>
+<Navigation />
 <div class="container">
-    <aside class="svg">
-        <h2>My SVG</h2>
-        <List />
-        <Import />
-        <Export />
-    </aside>
+    <header>
+        <h1>SVG Sandbox</h1>
+    </header>
     <main>
-        <h2>Preview</h2>
-        <Sandbox />
+        <section class="svg">
+            {#if $navigation === navigationStates.LAYERS}
+                <h2>My SVG</h2>
+                <List />
+            {:else if  $navigation === navigationStates.IMPORT}
+                <h2>IMPORT</h2>
+                <Import />
+            {:else if  $navigation === navigationStates.EXPORT}
+                <h2>EXPORT</h2>
+                <Export />
+            {/if}
+        </section>
+        <section class="preview">
+            <h2>Preview</h2>
+            <Sandbox />
+        </section>
+        {#if false}
+            <section class="detail">
+            </section>
+        {/if}
     </main>
-    {#if false}
-        <aside class="detail">
-        </aside>
-    {/if}
 </div>
 
 <style>
     .container {
-		display: flex;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    main {
+        display: flex;
         flex: 1;
         max-height: calc(100vh - 4rem);
         padding-bottom: 1rem;
     }
 
-    main, aside {
+    section {
         display: flex;
         flex-direction: column;
         padding: .5rem;
         overflow: auto;
-    }
-
-    main {
-        flex: 2;
-    }
-
-    aside {
         flex: 1;
     }
 
-    aside.svg {
+    section.preview {
+        flex: 3;
+    }
+
+    section.svg {
         border-right: 1px solid #ff3e00;
     }
 
-    aside.detail {
+    section.detail {
         border-left: 1px solid #ff3e00;
     }
 
@@ -59,25 +76,26 @@
             text-align: left;
         }
 
-        .container {
+        main {
             flex-direction: column;
             padding: 0 1rem;
         }
 
-        main {
-            order: 0;
-        }
-
-        aside {
+        section {
             order: 1;
             border-top: 1px solid #ff3e00;
         }
 
-        aside.svg {
+        section.preview {
+            order: 0;
+            border-top: 0;
+        }
+
+        section.svg {
             border-right: 0;
         }
 
-        aside.detail {
+        section.detail {
             border-left: 0;
         }
     }

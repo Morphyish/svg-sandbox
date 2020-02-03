@@ -1,15 +1,15 @@
 <script>
-    import Element from './Element.svelte'
+    import CustomElement from './Element.svelte'
 
     export let element
 </script>
 
 {#if element.type === 'element'}
-    <Element {...element}>
+    <CustomElement {...element}>
         {#each element.children as child}
             <svelte:self element={child} />
         {/each}
-    </Element>
+    </CustomElement>
 {:else if element.type === 'text'}
     {element.value}
 {:else}
