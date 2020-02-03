@@ -20,6 +20,8 @@
     }
 </script>
 
+<h2>IMPORT</h2>
+
 <form on:submit|preventDefault={loadSvg}>
     <label for="file_import">From file</label>
     <input type="file" id="file_import" name="file_import" />

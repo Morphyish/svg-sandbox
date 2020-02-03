@@ -16,13 +16,10 @@
     <main>
         <section class="svg">
             {#if $navigation === navigationStates.LAYERS}
-                <h2>My SVG</h2>
                 <List />
             {:else if  $navigation === navigationStates.IMPORT}
-                <h2>IMPORT</h2>
                 <Import />
             {:else if  $navigation === navigationStates.EXPORT}
-                <h2>EXPORT</h2>
                 <Export />
             {/if}
         </section>
