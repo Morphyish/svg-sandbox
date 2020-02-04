@@ -1,5 +1,5 @@
 <script>
-    import { svg } from '../stores'
+    import { svg, navigation } from '../stores'
 
     let svgAsString = ''
 
@@ -10,12 +10,14 @@
             reader.readAsText(file, 'UTF-8');
             reader.onload = event => {
                 svg.load(event.target.result)
+                navigation.goToLayers()
             }
             reader.onerror = () => {
                 console.log('error reading file')
             }
         } else if (svgAsString) {
             svg.load(svgAsString)
+            navigation.goToLayers()
         }
     }
 </script>
