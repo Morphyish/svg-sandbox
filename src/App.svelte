@@ -43,12 +43,12 @@
         display: flex;
         flex: 1;
         padding-bottom: 1rem;
+        max-height: calc(100vh - 4rem);
     }
 
     main {
         display: flex;
         flex: 1;
-        max-height: calc(100vh - 4rem);
     }
 
     section {
