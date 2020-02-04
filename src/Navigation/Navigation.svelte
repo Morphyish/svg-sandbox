@@ -62,6 +62,7 @@
     }
 
     a {
+        position: relative;
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -76,6 +77,16 @@
     a:hover,
     a.active {
         color: #ff3e00;
+    }
+
+    a.active::after {
+        content: '';
+        position: absolute;
+        background: #ff3e00;
+        top: .25rem;
+        bottom: .25rem;
+        right: 0;
+        width: 2px;
     }
 
     svg {
@@ -100,6 +111,14 @@
 
         li.bumper {
             margin-top: 0;
+        }
+
+        a.active::after {
+            top: 0;
+            left: 0;
+            right: 0;
+            width: inherit;
+            height: 2px;
         }
     }
 </style>
