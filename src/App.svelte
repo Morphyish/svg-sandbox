@@ -8,13 +8,13 @@
     import { navigation, navigationStates } from './stores'
 </script>
 
-<Navigation />
+<header>
+    <h1>SVG Sandbox</h1>
+</header>
 <div class="container">
-    <header>
-        <h1>SVG Sandbox</h1>
-    </header>
+    <Navigation />
     <main>
-        <section class="svg">
+        <section class="side">
             {#if $navigation === navigationStates.LAYERS}
                 <List />
             {:else if  $navigation === navigationStates.IMPORT}
@@ -35,17 +35,20 @@
 </div>
 
 <style>
+    h1 {
+        text-align: left;
+    }
+
     .container {
         display: flex;
-        flex-direction: column;
         flex: 1;
+        padding-bottom: 1rem;
     }
 
     main {
         display: flex;
         flex: 1;
         max-height: calc(100vh - 4rem);
-        padding-bottom: 1rem;
     }
 
     section {
@@ -60,7 +63,7 @@
         flex: 3;
     }
 
-    section.svg {
+    section.side {
         border-right: 1px solid #ff3e00;
     }
 
@@ -69,8 +72,8 @@
     }
 
     @media (max-width: 959px) {
-        h1 {
-            text-align: left;
+        .container {
+            flex-direction: column-reverse;
         }
 
         main {
@@ -88,7 +91,7 @@
             border-top: 0;
         }
 
-        section.svg {
+        section.side {
             border-right: 0;
         }
 
