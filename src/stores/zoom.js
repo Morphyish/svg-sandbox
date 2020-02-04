@@ -5,7 +5,7 @@ const max = 10
 const zoomValues = [min, .25, .5, .75, 1, 1.25, 1.5, 2, 3, 5, max]
 
 function zoomStore() {
-    const zoomIndex = writable(9)
+    const zoomIndex = writable(4)
     const zoom = derived(zoomIndex, index => zoomValues[index])
 
     const zoomIn = () => {
