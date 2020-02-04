@@ -12,7 +12,7 @@
                 <span>Layers</span>
             </a>
         </li>
-        <li>
+        <li class="bumper">
             <a href="#" on:click={navigation.goToImport} class:active={$navigation === navigationStates.IMPORT}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 482.239 482.239">
                     <path d="m0 447.793h482.239v34.446h-482.239z" />
@@ -57,6 +57,10 @@
         text-transform: uppercase;
     }
 
+    li.bumper {
+        margin-top: auto;
+    }
+
     a {
         display: flex;
         flex: 1;
@@ -92,6 +96,10 @@
         ul {
             flex-direction: row;
             justify-content: space-around;
+        }
+
+        li.bumper {
+            margin-top: 0;
         }
     }
 </style>
