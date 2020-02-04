@@ -83,10 +83,10 @@
         content: '';
         position: absolute;
         background: #ff3e00;
-        top: .25rem;
-        bottom: .25rem;
+        top: .5rem;
+        bottom: .5rem;
         right: 0;
-        width: 2px;
+        width: 1px;
     }
 
     svg {
