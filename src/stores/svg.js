@@ -2,14 +2,29 @@ import { get, writable } from 'svelte/store'
 import { parse } from 'svg-parser'
 import { stringify } from '../utils'
 
+function findSvgRoot(element) {
+    if (element.type === 'element' && element.tagName === 'svg') {
+        return element
+    }
+
+    if (element.children && element.children.length) {
+        for (const child of element.children) {
+            let result = findSvgRoot(child)
+            if (result) {
+                return result
+            }
+        }
+    }
+}
+
 function svgStore() {
     const svg = writable({ children: [] })
 
     const load = html => {
         const parsed = parse(html)
         if (parsed) {
-            console.log(parsed)
-            svg.set(parsed)
+            const svgRoot = findSvgRoot(parsed)
+            svg.set(svgRoot)
         }
     }
 
