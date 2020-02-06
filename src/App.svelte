@@ -1,6 +1,6 @@
 <script>
     import Sandbox from './Sandbox/Sandbox.svelte'
-    import List from './List/List.svelte'
+    import Layers from './Layers/Layers.svelte'
     import Import from './Import/Import.svelte'
     import Export from './Export/Export.svelte'
     import Navigation from './Navigation/Navigation.svelte'
@@ -16,7 +16,7 @@
     <main>
         <section class="side">
             {#if $navigation === navigationStates.LAYERS}
-                <List />
+                <Layers />
             {:else if  $navigation === navigationStates.IMPORT}
                 <Import />
             {:else if  $navigation === navigationStates.EXPORT}
