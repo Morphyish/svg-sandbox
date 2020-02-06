@@ -1,3 +1,7 @@
+:root {
+	--primary: #AC37F4
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -26,7 +30,7 @@ h1, h2 {
 h1 {
 	text-align: center;
 	font-size: 1.5rem;
-	color: #ff3e00;
+	color: var(--primary);
 	margin: 1rem;
 }
 

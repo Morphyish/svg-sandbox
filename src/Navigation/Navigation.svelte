@@ -76,13 +76,13 @@
     a:focus,
     a:hover,
     a.active {
-        color: #ff3e00;
+        color: var(--primary);
     }
 
     a.active::after {
         content: '';
         position: absolute;
-        background: #ff3e00;
+        background: var(--primary);
         top: .5rem;
         bottom: .5rem;
         right: 0;

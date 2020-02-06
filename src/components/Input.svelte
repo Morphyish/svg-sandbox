@@ -19,6 +19,6 @@
     }
 
     strong {
-        color: #ff3e00;
+        color: var(--primary);
     }
 </style>

@@ -64,11 +64,11 @@
     }
 
     section.side {
-        border-right: 1px solid #ff3e00;
+        border-right: 1px solid var(--primary);
     }
 
     section.detail {
-        border-left: 1px solid #ff3e00;
+        border-left: 1px solid var(--primary);
     }
 
     @media (max-width: 959px) {
@@ -84,7 +84,7 @@
 
         section {
             order: 1;
-            border-top: 1px solid #ff3e00;
+            border-top: 1px solid var(--primary);
         }
 
         section.preview {

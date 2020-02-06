@@ -36,16 +36,9 @@
         padding: .75rem .25rem;
     }
 
-    details p {
-        margin: 0;
-        padding: 0 .5rem .75rem .5rem;
-    }
-
-    .actions {
-        margin-left: auto;
-    }
-
-    .actions button {
-        margin: 0;
+    .menuitem:hover,
+    .menuitem:focus,
+    .menuitem:active {
+        color: var(--primary);
     }
 </style>
