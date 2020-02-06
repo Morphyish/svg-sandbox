@@ -7,6 +7,8 @@
     $: width = `${100 * $zoom}px`
 </script>
 
+<h2>Preview</h2>
+
 <div class="zoom">
     <em>zoom: {$zoom * 100}%</em>
     <button type="button" on:click={zoom.zoomOut} disabled={$zoom <= minZoom}>-</button>

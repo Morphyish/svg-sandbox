@@ -24,7 +24,6 @@
             {/if}
         </section>
         <section class="preview">
-            <h2>Preview</h2>
             <Sandbox />
         </section>
         {#if false}
