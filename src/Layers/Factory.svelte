@@ -15,7 +15,7 @@
         {/each}
     </Group>
 {:else if element.type === 'element'}
-    <Layer {...element} />
+    <Layer {element} />
 {:else}
     {#each element.children as child}
         <svelte:self element={child} />

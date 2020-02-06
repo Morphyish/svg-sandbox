@@ -1,10 +1,14 @@
 <script>
-    export let tagName
+    import { detail } from '../stores'
+
+    export let element
+
+    const handleClick = () => detail.openWith(element)
 </script>
 
 <li>
-    <div class="menuitem" role="button" tabindex="0">
-        {tagName}
+    <div class="menuitem" role="button" tabindex="0" on:click={handleClick}>
+        {element.tagName}
     </div>
 </li>
 
