@@ -1,11 +1,12 @@
 <script>
     import Sandbox from './Sandbox/Sandbox.svelte'
     import Layers from './Layers/Layers.svelte'
+    import Detail from './Detail/Detail.svelte'
     import Import from './Import/Import.svelte'
     import Export from './Export/Export.svelte'
     import Navigation from './Navigation/Navigation.svelte'
 
-    import { navigation, navigationStates } from './stores'
+    import { detail, navigation, navigationStates } from './stores'
 </script>
 
 <header>
@@ -26,8 +27,9 @@
         <section class="preview">
             <Sandbox />
         </section>
-        {#if false}
+        {#if $detail}
             <section class="detail">
+                <Detail />
             </section>
         {/if}
     </main>
