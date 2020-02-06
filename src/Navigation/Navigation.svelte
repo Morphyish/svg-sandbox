@@ -75,8 +75,10 @@
 
     a:focus,
     a:hover,
+    a:active,
     a.active {
         color: var(--primary);
+        opacity: 1;
     }
 
     a.active::after {
