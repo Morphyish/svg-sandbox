@@ -5,8 +5,6 @@
     export let element
     export let open
 
-    console.log(element.tagName, open)
-
     const canContainChildren = ['svg', 'defs', 'g', 'mask']
 </script>
 
