@@ -6,12 +6,12 @@
     <span class="tagName">
         {$detail.tagName}
     </span>
-    <div role="button" class="close" on:click={detail.close}>
+    <span role="button" class="close" on:click={detail.close}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <line x1="0" y1="0" x2="32" y2="32" />
             <line x1="0" y1="32" x2="32" y2="0" />
         </svg>
-    </div>
+    </span>
 </h2>
 
 <div>
