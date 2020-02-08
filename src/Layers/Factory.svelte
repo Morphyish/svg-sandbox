@@ -11,7 +11,7 @@
 
     $: element = $elements[node.id] || {}
 
-    const canContainChildren = ['svg', 'defs', 'g', 'mask']
+    const canContainChildren = ['svg', 'defs', 'g', 'mask', 'switch']
 </script>
 
 {#if element.type === 'element' && canContainChildren.includes(element.tagName)}

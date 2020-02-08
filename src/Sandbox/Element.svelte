@@ -30,6 +30,10 @@
     <mask {...properties}>
         <slot />
     </mask>
+{:else if tagName === 'switch'}
+    <switch {...properties}>
+        <slot />
+    </switch>
 {:else if tagName === 'use'}
     <use {...properties} />
 {:else if tagName === 'circle'}
