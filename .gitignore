@@ -1,7 +1,4 @@
 .idea
-.firebaserc
-firebase.json
-.firebase
 /node_modules/
-/public/build/
+/dist/public/build/
 
