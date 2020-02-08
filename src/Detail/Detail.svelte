@@ -30,7 +30,7 @@
 
     <label>
         stroke width
-        <input bind:value={$elements[$detail.id].properties.strokeWidth} />
+        <input bind:value={$elements[$detail.id].properties['stroke-width']} />
     </label>
 
     <label>
