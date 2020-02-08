@@ -1,7 +1,10 @@
 <script>
     import { detail, elements } from '../stores'
 
-    $: console.log($elements[$detail.id])
+    const styles = ['stroke-width', 'stroke', 'fill']
+
+    let properties = []
+    $: properties = Object.keys($elements[$detail.id].properties).filter(p => !styles.includes(p))
 </script>
 
 <h2>
@@ -19,29 +22,20 @@
 <div>
     <h3>Properties</h3>
 
-    <label>
-        d
-        <input bind:value={$elements[$detail.id].properties.d} />
-    </label>
+    {#each properties as property}
+        <label for={property}>{property}</label>
+        <input type="text" id={property} name={property} bind:value={$elements[$detail.id].properties[property]}>
+    {/each}
 </div>
 
 <div>
     <h3>Style</h3>
 
-    <label>
-        stroke width
-        <input bind:value={$elements[$detail.id].properties['stroke-width']} />
-    </label>
 
-    <label>
-        stroke color
-        <input bind:value={$elements[$detail.id].properties.stroke} />
-    </label>
-
-    <label>
-        fill
-        <input bind:value={$elements[$detail.id].properties.fill} />
-    </label>
+    {#each styles as style}
+        <label for={style}>{style}</label>
+        <input type="text" id={style} name={style} bind:value={$elements[$detail.id].properties[style]}>
+    {/each}
 </div>
 
 <style>
