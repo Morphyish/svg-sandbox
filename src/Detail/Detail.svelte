@@ -14,6 +14,34 @@
     </div>
 </h2>
 
+<div>
+    <h3>Properties</h3>
+
+    <label>
+        d
+        <input bind:value={$detail.properties.d} />
+    </label>
+</div>
+
+<div>
+    <h3>Style</h3>
+
+    <label>
+        stroke width
+        <input bind:value={$detail.properties.strokeWidth} />
+    </label>
+
+    <label>
+        stroke color
+        <input bind:value={$detail.properties.stroke} />
+    </label>
+
+    <label>
+        fill
+        <input bind:value={$detail.properties.fill} />
+    </label>
+</div>
+
 <style>
     h2 {
         display: flex;
