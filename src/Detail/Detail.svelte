@@ -1,12 +1,14 @@
 <script>
-    import { detail } from '../stores'
+    import { detail, elements } from '../stores'
+
+    $: console.log($elements[$detail.id])
 </script>
 
 <h2>
     <span class="tagName">
-        {$detail.tagName}
+        {$elements[$detail.id].tagName}
     </span>
-    <span role="button" class="close" on:click={detail.close}>
+    <span role="button" class="close" tabindex="0" on:click={detail.close}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <line x1="0" y1="0" x2="32" y2="32" />
             <line x1="0" y1="32" x2="32" y2="0" />
@@ -19,7 +21,7 @@
 
     <label>
         d
-        <input bind:value={$detail.properties.d} />
+        <input bind:value={$elements[$detail.id].properties.d} />
     </label>
 </div>
 
@@ -28,17 +30,17 @@
 
     <label>
         stroke width
-        <input bind:value={$detail.properties.strokeWidth} />
+        <input bind:value={$elements[$detail.id].properties.strokeWidth} />
     </label>
 
     <label>
         stroke color
-        <input bind:value={$detail.properties.stroke} />
+        <input bind:value={$elements[$detail.id].properties.stroke} />
     </label>
 
     <label>
         fill
-        <input bind:value={$detail.properties.fill} />
+        <input bind:value={$elements[$detail.id].properties.fill} />
     </label>
 </div>
 

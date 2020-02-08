@@ -17,7 +17,7 @@
 
 <div class="svg-container">
     <div class="svg-holder" style={`--height: ${height};--width: ${width}`}>
-        <Factory element={$svg} />
+        <Factory node={$svg} />
     </div>
 </div>
 

@@ -1,38 +1,39 @@
-export function stringify(element) {
+export function stringify(node, elements) {
+    const element = elements[node.id]
     let string = ''
 
     if (element.type === 'element') {
-        let children = ''
-        for (const child of element.children) {
-            children += stringify(child)
+        let content = ''
+        for (const child of node.children) {
+            content += stringify(child, elements)
         }
-        string += stringifyElement(element, children)
+        string += stringifyElement(element, content)
     } else if (element.type === 'text') {
         string = element.value
     } else {
-        for (const child of element.children) {
-            string += stringify(child)
+        for (const child of node.children) {
+            string += stringify(child, elements)
         }
     }
 
     return string
 }
 
-function stringifyElement(element, children) {
+function stringifyElement(element, content) {
     let string = ''
 
     const properties = stringifyProperties(element.properties)
 
     if (element.tagName === 'svg') {
-        return `<svg ${properties}>${children}</svg>`
+        return `<svg ${properties}>${content}</svg>`
     } else if (element.tagName === 'title') {
-        return `<title ${properties}>${children}</title>`
+        return `<title ${properties}>${content}</title>`
     } else if (element.tagName === 'desc') {
-        return `<desc ${properties}>${children}</desc>`
+        return `<desc ${properties}>${content}</desc>`
     } else if (element.tagName === 'defs') {
-        return `<defs ${properties}>${children}</defs>`
+        return `<defs ${properties}>${content}</defs>`
     } else if (element.tagName === 'g') {
-        return `<g ${properties}>${children}</g>`
+        return `<g ${properties}>${content}</g>`
     } else if (element.tagName === 'circle') {
         return `<circle ${properties} />`
     } else if (element.tagName === 'ellipse') {

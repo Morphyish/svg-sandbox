@@ -2,22 +2,28 @@
     import Group from './Group.svelte'
     import Layer from './Layer.svelte'
 
-    export let element
+    import { elements } from '../stores'
+
+    export let node = {}
     export let open
+
+    let element
+
+    $: element = $elements[node.id] || {}
 
     const canContainChildren = ['svg', 'defs', 'g', 'mask']
 </script>
 
 {#if element.type === 'element' && canContainChildren.includes(element.tagName)}
     <Group {...element} {open}>
-        {#each element.children as child}
-            <svelte:self element={child} />
+        {#each node.children as child}
+            <svelte:self node={child} />
         {/each}
     </Group>
 {:else if element.type === 'element'}
-    <Layer {element} />
-{:else}
-    {#each element.children as child}
-        <svelte:self element={child} />
+    <Layer {node} {element} />
+{:else if node.children}
+    {#each node.children as child}
+        <svelte:self node={child} />
     {/each}
 {/if}

@@ -4,8 +4,7 @@
     let svgAsString = ''
     let svgAsUrl = ''
 
-    $: $svg, svgAsString = svg.exportAsString()
-    $: $svg, svgAsUrl = svg.exportAsUrl()
+    $: $svg, { svgAsString, svgAsUrl } = svg.export()
 
     const copyToClipboardFallback = () => {
         const textArea = document.createElement('textarea');

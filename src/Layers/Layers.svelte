@@ -7,7 +7,7 @@
 <h2>LAYERS</h2>
 
 <ul>
-    <Factory element={$svg} open={true} />
+    <Factory node={$svg} open={true} />
 </ul>
 
 <style>

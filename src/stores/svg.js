@@ -1,56 +1,42 @@
 import { get, writable } from 'svelte/store'
-import { parse } from 'svg-parser'
-import { stringify } from '../utils'
-
-function findSvgRoot(element) {
-    if (element.type === 'element' && element.tagName === 'svg') {
-        return element
-    }
-
-    if (element.children && element.children.length) {
-        for (const child of element.children) {
-            let result = findSvgRoot(child)
-            if (result) {
-                return result
-            }
-        }
-    }
-}
+import { parse, stringify } from '../utils'
 
 function svgStore() {
-    const svg = writable({ children: [] })
+    const svg = writable({id: -1, children: []})
+    const elements = writable({})
 
-    const load = html => {
-        const parsed = parse(html)
-        if (parsed) {
-            const svgRoot = findSvgRoot(parsed)
-            svg.set(svgRoot)
+    const importSvg = html => {
+        const data = parse(html)
+        svg.set(data.node)
+        elements.set(data.elements)
+    }
+
+    const exportSvg = () => {
+        const $svg = get(svg)
+        const $elements = get(elements)
+
+        let svgAsUrl = '#'
+        const svgAsString = stringify($svg, $elements)
+
+        if (svgAsString) {
+            const affixedSvgAsString = `<?xml version="1.0" encoding="utf-8"?>\r\n${svgAsString}`
+
+            svgAsUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(affixedSvgAsString)}`
         }
-    }
 
-    const exportAsString = () => {
-        const snapshot = get(svg)
-
-        return stringify(snapshot)
-    }
-
-    const exportAsUrl = () => {
-        let source = exportAsString()
-        if (source) {
-            source = `<?xml version="1.0" encoding="utf-8"?>\r\n${source}`
-
-            return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(source)}`
-        } else {
-            return '#'
+        return {
+            svgAsString,
+            svgAsUrl,
         }
     }
 
     return {
         ...svg,
-        load,
-        exportAsString,
-        exportAsUrl,
+        elements,
+        import: importSvg,
+        export: exportSvg,
     }
 }
 
 export const svg = svgStore()
+export const elements = svg.elements

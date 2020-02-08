@@ -1,13 +1,14 @@
 <script>
     import { detail } from '../stores'
 
+    export let node
     export let element
 
-    const handleClick = () => detail.openWith(element)
+    const handleClick = () => detail.select(node)
 </script>
 
 <li>
-    <div class="menuitem" class:selected={$detail === element} role="button" tabindex="0" on:click={handleClick}>
+    <div class="menuitem" class:selected={$detail === node} role="button" tabindex="0" on:click={handleClick}>
         {element.tagName}
     </div>
 </li>

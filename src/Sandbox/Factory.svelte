@@ -1,19 +1,25 @@
 <script>
     import CustomElement from './Element.svelte'
 
-    export let element
+    import { elements } from '../stores'
+
+    export let node = {}
+
+    let element
+
+    $: element = $elements[node.id] || {}
 </script>
 
 {#if element.type === 'element'}
     <CustomElement {...element}>
-        {#each element.children as child}
-            <svelte:self element={child} />
+        {#each node.children as child}
+            <svelte:self node={child} />
         {/each}
     </CustomElement>
 {:else if element.type === 'text'}
     {element.value}
-{:else}
-    {#each element.children as child}
-        <svelte:self element={child} />
+{:else if node.children}
+    {#each node.children as child}
+        <svelte:self node={child} />
     {/each}
 {/if}

@@ -9,14 +9,14 @@
             const reader = new FileReader();
             reader.readAsText(file, 'UTF-8');
             reader.onload = event => {
-                svg.load(event.target.result)
+                svg.import(event.target.result)
                 navigation.goToLayers()
             }
             reader.onerror = () => {
                 console.log('error reading file')
             }
         } else if (svgAsString) {
-            svg.load(svgAsString)
+            svg.import(svgAsString)
             navigation.goToLayers()
         }
     }
